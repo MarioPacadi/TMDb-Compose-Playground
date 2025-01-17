@@ -19,7 +19,7 @@ Modular Android architecture which showcase Kotlin, Jetpack Compose, Navigation 
 
 Add your [TMDB](https://www.themoviedb.org/) API key in the `local.properties` file:
 ```
-tmdb_api_key=YOUR_API_KEY
+tmdb_api_key=TMDB_API_KEY
 ```
 
 ### Inspired from

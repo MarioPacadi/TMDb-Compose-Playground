@@ -54,7 +54,7 @@ data class MovieDetailResponse(
     @Json(name = STATUS) override val status: String,
     @Json(name = TAGLINE) override val tagline: String,
     @Json(name = TITLE) override val title: String,
-    @Json(name = VOTE_AVERAGE) override val voteAverage: Double,
+    @Json(name = VOTE_AVERAGE) override val voteAverage: Double = 0.0,
     @Json(name = VOTE_COUNT) override val voteCount: Int,
 ) : TMDbItemDetailsResponse
 
@@ -74,7 +74,7 @@ data class TvDetailResponse(
     @Json(name = STATUS) override val status: String,
     @Json(name = TAGLINE) override val tagline: String,
     @Json(name = NAME) override val title: String,
-    @Json(name = VOTE_AVERAGE) override val voteAverage: Double,
+    @Json(name = VOTE_AVERAGE) override val voteAverage: Double = 0.0,
     @Json(name = VOTE_COUNT) override val voteCount: Int,
 ) : TMDbItemDetailsResponse
 
@@ -138,7 +138,7 @@ fun TvDetailResponse.asDomainModel(): TvDetails = TvDetails(
     status,
     tagline,
     title,
-    voteAverage,
+    voteAverage?:0.0,
     voteCount,
 )
 

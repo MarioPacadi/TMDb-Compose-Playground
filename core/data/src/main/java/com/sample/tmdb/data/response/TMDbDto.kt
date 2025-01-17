@@ -43,9 +43,9 @@ data class NetworkMovie(
     @Json(name = TITLE)
     override val name: String,
     @Json(name = VOTE_AVERAGE)
-    override val voteAverage: Double,
+    override val voteAverage: Double=0.0,
     @Json(name = VOTE_COUNT)
-    override val voteCount: Int,
+    override val voteCount: Int=0,
 ) : NetworkTMDbItem
 
 @JsonClass(generateAdapter = true)
@@ -63,9 +63,9 @@ data class NetworkTVShow(
     @Json(name = NAME)
     override val name: String,
     @Json(name = VOTE_AVERAGE)
-    override val voteAverage: Double,
+    override val voteAverage: Double=0.0,
     @Json(name = VOTE_COUNT)
-    override val voteCount: Int,
+    override val voteCount: Int=0,
 ) : NetworkTMDbItem
 
 fun List<NetworkMovie>.asMovieDomainModel(): List<Movie> = map {

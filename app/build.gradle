@@ -71,6 +71,7 @@ dependencies {
     implementation project(path: BuildModules.FEATURE_DETAIL)
     implementation project(path: BuildModules.FEATURE_CREDIT)
     implementation project(path: BuildModules.FEATURE_IMAGE)
+    implementation project(path: BuildModules.FEATURE_WEBVIEW)
 
     implementation Deps.material
     implementation Deps.composeMaterial
@@ -82,4 +83,10 @@ dependencies {
     implementation Deps.hilt
     ksp Deps.hilt_compiler
     implementation Deps.gson
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

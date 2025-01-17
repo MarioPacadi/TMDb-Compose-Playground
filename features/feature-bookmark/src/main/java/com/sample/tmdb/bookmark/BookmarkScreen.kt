@@ -104,7 +104,8 @@ fun BookmarkScreen(navController: NavController, coroutineScope: CoroutineScope 
 private fun MoviesTabContent(navController: NavController, viewModel: BookmarkMovieViewModel = hiltViewModel()) {
     TabContent(
         viewModel = viewModel,
-        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+//        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+        onClick = { navController.navigate("${MainDestinations.TMDB_WATCH_MOVIE}/${it.id}") },
         textResourceId = R1.string.movies,
     )
 }

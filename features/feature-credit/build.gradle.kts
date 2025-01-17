@@ -46,6 +46,7 @@ dependencies {
     ksp(Deps.hilt_compiler)
     implementation(Deps.hilt_compose)
     implementation(Deps.composeUi)
+    implementation(Deps.composeIcons)
     implementation(Deps.composeFoundation)
     implementation(Deps.composeMaterial)
     implementation(Deps.coil)
@@ -55,4 +56,9 @@ dependencies {
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

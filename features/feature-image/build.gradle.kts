@@ -44,6 +44,7 @@ dependencies {
     implementation(Deps.composeUi)
     implementation(Deps.composeFoundation)
     implementation(Deps.composeMaterial)
+    implementation(Deps.composeIcons)
     implementation(Deps.coil)
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)

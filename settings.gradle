@@ -5,11 +5,18 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.mozilla.org/maven2/")
+        }
     }
 }
 rootProject.name = "Tmdb-Compose"
@@ -25,3 +32,5 @@ include ':features:feature-setting'
 include ':features:feature-detail'
 include ':features:feature-paging'
 include ':features:feature-image'
+include ':features-webview'
+include ':features:feature-webview'

@@ -1,5 +1,5 @@
 object Versions {
-    const val compose = "1.6.4"
+    const val compose = "1.7.6"
     const val compose_paging = "3.2.1"
     const val constraint_layout = "1.0.1"
     const val compose_activity = "1.8.2"
@@ -11,13 +11,13 @@ object Versions {
     const val hiltCompose = "1.2.0"
     const val retrofit = "2.11.0"
     const val okhttp = "4.12.0"
-    const val moshi = "1.15.1"
+    const val moshi = "1.15.2"
     const val converterMoshi = "2.11.0"
     const val coroutines = "1.8.0"
     const val coil = "2.6.0"
     const val gson = "2.10.1"
     const val palette = "1.0.0"
-    const val icon_extended = "1.6.4"
+    const val icon_extended = "1.7.6"
     const val browser = "1.8.0"
     const val room_version = "2.6.1"
     const val annotation = "1.7.1"
@@ -27,12 +27,13 @@ object Versions {
     const val mockk = "1.13.12"
     const val turbine = "1.1.0"
     const val spotless = "7.0.0.BETA2"
+    const val gekoview="135.0.20250113112036"
 }
 
 object AppMetaData {
     const val id = "com.sample.tmdb"
-    const val targetSdkVersion = 34
-    const val compileSdkVersion = 34
+    const val targetSdkVersion = 35
+    const val compileSdkVersion = 35
     const val minSdkVersion = 21
 }
 
@@ -52,12 +53,14 @@ object BuildModules {
     const val FEATURE_DETAIL = ":features:feature-detail"
     const val FEATURE_CREDIT = ":features:feature-credit"
     const val FEATURE_IMAGE = ":features:feature-image"
+    const val FEATURE_WEBVIEW = ":features:feature-webview"
 }
 
 object Deps {
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeIcons = "androidx.compose.material:material-icons-core-android:${Versions.compose}"
     const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
@@ -129,4 +132,7 @@ object Deps {
     const val junit4 = "junit:junit:${Versions.junit}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
+
+    //Webview
+    const val genkoView="org.mozilla.geckoview:geckoview-beta:${Versions.gekoview}"
 }

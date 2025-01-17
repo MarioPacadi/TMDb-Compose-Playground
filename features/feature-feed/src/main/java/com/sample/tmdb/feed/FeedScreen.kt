@@ -72,7 +72,8 @@ fun MovieFeedScreen(navController: NavController, viewModel: MovieFeedViewModel 
         viewModel = viewModel,
         navController = navController,
         onSearchClicked = { navController.navigate(MainDestinations.TMDB_SEARCH_MOVIE_ROUTE) },
-        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+//        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+        onClick = { navController.navigate("${MainDestinations.TMDB_WATCH_MOVIE}/${it.id}") },
         R1.string.movies,
     )
 }

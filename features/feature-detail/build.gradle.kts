@@ -47,6 +47,7 @@ dependencies {
     implementation(Deps.coroutinesCore)
     implementation(Deps.coroutinesAndroid)
     implementation(Deps.hilt)
+    implementation(project(":features:feature-webview"))
     ksp(Deps.hilt_compiler)
     implementation(Deps.hilt_compose)
     implementation(Deps.composeUi)
@@ -64,4 +65,9 @@ dependencies {
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

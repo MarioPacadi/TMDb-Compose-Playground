@@ -215,7 +215,8 @@ private fun MoviePagingScreen(viewModel: BasePagingViewModel<Movie>, navControll
     PagingScreen(
         viewModel = viewModel,
         navController = navController,
-        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+//        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+        onClick = { navController.navigate("${MainDestinations.TMDB_WATCH_MOVIE}/${it.id}") },
         onSearchClicked = { navController.navigate(MainDestinations.TMDB_SEARCH_MOVIE_ROUTE) },
         title = title,
     )

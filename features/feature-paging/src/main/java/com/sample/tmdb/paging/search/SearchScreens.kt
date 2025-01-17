@@ -59,7 +59,8 @@ import com.sample.tmdb.paging.R
 fun SearchMoviesScreen(navController: NavController, viewModel: SearchMoviesViewModel = hiltViewModel()) {
     Search(
         viewModel = viewModel,
-        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+//        onClick = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+        onClick = { navController.navigate("${MainDestinations.TMDB_WATCH_MOVIE}/${it.id}") },
         upPress = { navController.navigateUp() },
         resourceId = R1.string.movies,
     )

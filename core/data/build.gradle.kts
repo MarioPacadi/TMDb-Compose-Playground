@@ -59,6 +59,11 @@ dependencies {
     testImplementation(Deps.coroutineTest)
     testImplementation(Deps.turbine)
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 fun getProperty(filename: String, propName: String): String? {
     val propsFile = rootProject.file(filename)

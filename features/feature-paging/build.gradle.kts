@@ -48,10 +48,16 @@ dependencies {
     implementation(Deps.composeMaterial)
     implementation(Deps.composePaging)
     implementation(Deps.hilt)
+    implementation("androidx.tv:tv-material:1.0.0")
     ksp(Deps.hilt_compiler)
     implementation(Deps.hilt_compose)
     implementation(Deps.lottieCompose)
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

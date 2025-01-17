@@ -30,4 +30,6 @@ object MainDestinations {
     const val TMDB_SIMILAR_MOVIES_ROUTE = "similar_movies"
     const val TMDB_SIMILAR_TV_SHOW_ROUTE = "similar_tv_show"
     const val TMDB_SIMILAR_ID = "similarId"
+    const val TMDB_WATCH_MOVIE = "watch_movie"
+    const val TMDB_WATCH_SHOW = "watch_show"
 }

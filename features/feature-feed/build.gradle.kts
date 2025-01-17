@@ -59,3 +59,8 @@ dependencies {
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}

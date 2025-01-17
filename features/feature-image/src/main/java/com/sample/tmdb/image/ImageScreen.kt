@@ -51,7 +51,7 @@ fun ImagesScreen(images: List<TMDbImage>, initialPage: Int) {
             initialPageOffsetFraction = 0f,
         ) { images.size }
     Box {
-        HorizontalPager(state = pagerState, key = { images[it].url + it }, beyondBoundsPageCount = 4) {
+        HorizontalPager(state = pagerState, key = { images[it].url + it }, beyondViewportPageCount = 4) {
             Poster(images[it])
         }
         Index(position = pagerState.currentPage + 1, imageCount = pagerState.pageCount)

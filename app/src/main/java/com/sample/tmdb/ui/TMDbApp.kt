@@ -50,6 +50,7 @@ import com.sample.tmdb.detail.TVShowDetailScreen
 import com.sample.tmdb.domain.model.Cast
 import com.sample.tmdb.domain.model.Crew
 import com.sample.tmdb.domain.model.TMDbImage
+import com.sample.tmdb.feature_webview.DemoPlayer
 import com.sample.tmdb.feed.MovieFeedScreen
 import com.sample.tmdb.feed.TVShowFeedScreen
 import com.sample.tmdb.image.ImagesScreen
@@ -104,6 +105,7 @@ fun TMDbApp() {
             searchScreens(appState.navController)
             creditScreens(appState.navController)
             personScreen(appState.navController)
+            webPlayerScreen(appState.navController)
             imagesScreen()
         }
     }
@@ -164,15 +166,6 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
 
 private fun NavGraphBuilder.detailScreens(navController: NavController) {
     composable(
-        route = "${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/{${MainDestinations.TMDB_ID_KEY}}",
-        arguments =
-        listOf(
-            navArgument(MainDestinations.TMDB_ID_KEY) { type = NavType.IntType },
-        ),
-    ) {
-        MovieDetailScreen(navController)
-    }
-    composable(
         route = "${MainDestinations.TMDB_TV_SHOW_DETAIL_ROUTE}/{${MainDestinations.TMDB_ID_KEY}}",
         arguments =
         listOf(
@@ -180,6 +173,15 @@ private fun NavGraphBuilder.detailScreens(navController: NavController) {
         ),
     ) {
         TVShowDetailScreen(navController)
+    }
+    composable(
+        route = "${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/{${MainDestinations.TMDB_ID_KEY}}",
+        arguments =
+        listOf(
+            navArgument(MainDestinations.TMDB_ID_KEY) { type = NavType.IntType },
+        ),
+    ) {
+        MovieDetailScreen(navController)
     }
 }
 
@@ -317,6 +319,22 @@ private fun NavGraphBuilder.imagesScreen() {
             ),
             initialPage = from.arguments?.getInt(MainDestinations.TMDB_IMAGE_PAGE)!!,
         )
+    }
+}
+
+private fun NavGraphBuilder.webPlayerScreen(navController: NavController){
+    composable(
+        route = "${MainDestinations.TMDB_WATCH_MOVIE}/{${MainDestinations.TMDB_ID_KEY}}",
+        arguments =
+        listOf(
+            navArgument(MainDestinations.TMDB_ID_KEY) { type = NavType.IntType },
+        ),
+    ) { backStackEntry ->
+        // Retrieve the argument and pass it to PlayerScreen
+        val passArgument = backStackEntry.arguments?.getInt(MainDestinations.TMDB_ID_KEY)
+        passArgument?.let {
+            DemoPlayer(navController,it)
+        }
     }
 }
 

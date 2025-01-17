@@ -131,13 +131,15 @@ import com.sample.tmdb.domain.model.Movie
 import com.sample.tmdb.domain.model.TMDbImage
 import com.sample.tmdb.domain.model.TMDbItemDetails
 import com.sample.tmdb.domain.model.TVShow
+import com.sample.tmdb.feature_webview.DemoPlayer
 
 @Composable
 fun MovieDetailScreen(navController: NavController, viewModel: MovieDetailViewModel = hiltViewModel()) {
     DetailScreen(
         viewModel = viewModel,
         navController = navController,
-        onTMDbItemSelected = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+//        onTMDbItemSelected = { navController.navigate("${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/${it.id}") },
+        onTMDbItemSelected = { navController.navigate("${MainDestinations.TMDB_WATCH_MOVIE}/${it.id}") },
         onAllSimilarSelected = { navController.navigate("${MainDestinations.TMDB_SIMILAR_MOVIES_ROUTE}/$it") },
     ) { details ->
         Movie(
