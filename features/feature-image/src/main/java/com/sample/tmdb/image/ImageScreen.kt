@@ -1,5 +1,6 @@
 package com.sample.tmdb.image
 
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -28,10 +29,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.sample.tmdb.common.R as R1
 import com.sample.tmdb.common.ui.Dimens.TMDb_12_dp
 import com.sample.tmdb.common.ui.Dimens.TMDb_16_dp
@@ -72,7 +76,7 @@ fun Poster(image: TMDbImage) {
         ) {
             Box {
                 Image(
-                    painter = rememberAsyncImagePainter(image.url),
+                    painter = rememberAsyncImagePainterWithFallback(imageUrl = image.url, fallbackImageResId = R.drawable.fallback_image),
                     contentDescription = null,
                     modifier =
                     Modifier
@@ -93,11 +97,24 @@ fun BlurImage(url: String) {
         model = url,
         contentDescription = stringResource(id = R1.string.poster_content_description),
         contentScale = ContentScale.FillHeight,
+        error = rememberAsyncImagePainter(R.drawable.fallback_image),
         modifier =
         Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.surface)
             .blur(TMDb_16_dp),
+
+    )
+}
+
+
+@Composable
+fun rememberAsyncImagePainterWithFallback(imageUrl: String, fallbackImageResId: Int): Painter {
+    return rememberAsyncImagePainter(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(imageUrl) // The original image URL
+            .error(fallbackImageResId) // Fallback URL for error handling
+            .build()
     )
 }
 

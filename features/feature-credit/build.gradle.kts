@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -56,6 +57,9 @@ dependencies {
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
+
+    implementation(Deps.tvMaterial)
+    implementation(Deps.tvFoundation)
 }
 java {
     toolchain {

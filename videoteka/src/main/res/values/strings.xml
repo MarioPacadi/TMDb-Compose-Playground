@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Videoteka</string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
+    <string name="favorite">Favorite</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TVShow</string>
+    <string name="setting">Setting</string>
+</resources>

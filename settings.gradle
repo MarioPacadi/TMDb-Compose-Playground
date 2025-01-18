@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tmdb-Compose"
 include ':app'
+include ':videoteka'
 include ':common'
 include ':common-test'
 include ':core:data'
@@ -32,5 +33,4 @@ include ':features:feature-setting'
 include ':features:feature-detail'
 include ':features:feature-paging'
 include ':features:feature-image'
-include ':features-webview'
 include ':features:feature-webview'

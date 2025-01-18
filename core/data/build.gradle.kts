@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         minSdk = AppMetaData.minSdkVersion
-        buildConfigField("String", "TMDB_BASE_URL", "\"http://api.themoviedb.org/\"")
+        buildConfigField("String", "TMDB_BASE_URL", "\"https://api.themoviedb.org/\"")
         buildConfigField("String", "TMDB_API_KEY", "\"${getProperty("local.properties", "tmdb_api_key") ?: System.getenv("TMDB_API_KEY")}\"")
 
 
@@ -58,6 +58,9 @@ dependencies {
     testImplementation(Deps.mockito)
     testImplementation(Deps.coroutineTest)
     testImplementation(Deps.turbine)
+
+    implementation(Deps.tvMaterial)
+    implementation(Deps.tvFoundation)
 }
 java {
     toolchain {

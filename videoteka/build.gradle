@@ -47,8 +47,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         compose true
@@ -57,10 +57,10 @@ android {
         kotlinCompilerExtensionVersion '1.5.11'
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
         freeCompilerArgs += ["-opt-in=kotlin.RequiresOptIn"]
     }
-    namespace 'com.sample.tmdb'
+    namespace 'hr.fourp.tv'
 }
 
 dependencies {
@@ -84,6 +84,9 @@ dependencies {
     implementation Deps.hilt
     ksp Deps.hilt_compiler
     implementation Deps.gson
+
+    implementation Deps.tvFoundation
+    implementation Deps.tvMaterial
 }
 
 java {

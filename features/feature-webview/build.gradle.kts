@@ -4,6 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -54,7 +55,7 @@ dependencies {
     ksp(Deps.hilt_compiler)
     implementation(project(mapOf("path" to BuildModules.DOMAIN)))
 
-//    implementation("org.mozilla.geckoview:geckoview-nightly:123.0.20231228170344")
     implementation(Deps.genkoView)
-//    implementation("com.github.DevAtrii:ComposeWebKit:3.2.1")
+    implementation(Deps.tvMaterial)
+    implementation(Deps.tvFoundation)
 }

@@ -27,6 +27,9 @@ object Versions {
     const val mockk = "1.13.12"
     const val turbine = "1.1.0"
     const val spotless = "7.0.0.BETA2"
+
+    const val TV_Material="1.0.0"
+    const val TV_Foundation="1.0.0-alpha12"
     const val gekoview="135.0.20250113112036"
 }
 
@@ -59,8 +62,10 @@ object BuildModules {
 object Deps {
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val tvMaterial = "androidx.tv:tv-material:${Versions.TV_Material}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
     const val composeIcons = "androidx.compose.material:material-icons-core-android:${Versions.compose}"
+    const val tvFoundation = "androidx.tv:tv-foundation:${Versions.TV_Foundation}"
     const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"

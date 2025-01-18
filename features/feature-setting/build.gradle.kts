@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 val appVersion = (File(project.rootDir, "version.txt")).readText().trim()
@@ -52,6 +53,9 @@ dependencies {
     androidTestImplementation(Deps.composeUiTest)
     androidTestImplementation(Deps.mockito)
     debugImplementation(Deps.composeManifest)
+
+    implementation(Deps.tvMaterial)
+    implementation(Deps.tvFoundation)
 }
 java {
     toolchain {
