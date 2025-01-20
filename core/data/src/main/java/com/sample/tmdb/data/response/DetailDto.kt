@@ -138,7 +138,7 @@ fun TvDetailResponse.asDomainModel(): TvDetails = TvDetails(
     status,
     tagline,
     title,
-    voteAverage?:0.0,
+    voteAverage,
     voteCount,
 )
 

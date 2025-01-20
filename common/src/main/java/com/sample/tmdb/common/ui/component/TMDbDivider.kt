@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -31,7 +32,7 @@ fun TMDbDivider(
 
 private const val DIVIDER_ALPHA = 0.12f
 
-@Preview("default", showBackground = true)
+@Preview("default", showBackground = true, device = Devices.TV_1080p)
 @Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 private fun DividerPreview() {

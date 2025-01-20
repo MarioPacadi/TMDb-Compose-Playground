@@ -62,16 +62,18 @@ object BuildModules {
 object Deps {
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
-    const val tvMaterial = "androidx.tv:tv-material:${Versions.TV_Material}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
     const val composeIcons = "androidx.compose.material:material-icons-core-android:${Versions.compose}"
-    const val tvFoundation = "androidx.tv:tv-foundation:${Versions.TV_Foundation}"
     const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.nav_version}"
     const val composeConstraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraint_layout}"
     const val iconExtended = "androidx.compose.material:material-icons-extended:${Versions.icon_extended}"
+
+    // TV Compose
+    const val tvMaterial = "androidx.tv:tv-material:${Versions.TV_Material}"
+    const val tvFoundation = "androidx.tv:tv-foundation:${Versions.TV_Foundation}"
 
     // Paging Compose
     const val composePaging = "androidx.paging:paging-compose:${Versions.compose_paging}"

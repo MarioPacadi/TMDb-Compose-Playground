@@ -5,13 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowCompat
 import androidx.tv.material3.ExperimentalTvMaterial3Api
-import androidx.tv.material3.MaterialTheme
 
 import com.sample.tmdb.common.ui.theme.AlphaNavigationBar
 import com.sample.tmdb.common.ui.theme.AlphaNearOpaque
@@ -20,32 +21,31 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalTvMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // This app draws behind the system bars, so we want to handle fitting system windows
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
 
 //        registerOnBackPress {
 //
 //        }
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         enableEdgeToEdge()
         setContent {
-            TmdbPagingComposeTheme {
-                ChangeSystemBarsTheme(!isSystemInDarkTheme())
+            TmdbPagingComposeTheme(darkTheme = true) {
+                ChangeSystemBarsTheme(true)
                 TMDbApp()
             }
         }
     }
 
     @Composable
-    private fun ChangeSystemBarsTheme(lightTheme: Boolean) {
-        val statusBarColor = MaterialTheme.colorScheme.background.copy(alpha = AlphaNearOpaque).toArgb()
-        val navigationBarColor = MaterialTheme.colorScheme.background.copy(alpha = AlphaNavigationBar).toArgb()
-        LaunchedEffect(lightTheme) {
-            if (lightTheme) {
+    private fun ChangeSystemBarsTheme(darkTheme: Boolean) {
+        val statusBarColor = MaterialTheme.colors.background.copy(alpha = AlphaNearOpaque).toArgb()
+        val navigationBarColor = MaterialTheme.colors.background.copy(alpha = AlphaNavigationBar).toArgb()
+        LaunchedEffect(darkTheme) {
+            if (!darkTheme) {
                 enableEdgeToEdge(
                     statusBarStyle = SystemBarStyle.light(statusBarColor, statusBarColor),
                     navigationBarStyle = SystemBarStyle.light(navigationBarColor, navigationBarColor),

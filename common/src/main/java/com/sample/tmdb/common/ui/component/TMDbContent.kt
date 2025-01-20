@@ -1,5 +1,6 @@
 package com.sample.tmdb.common.ui.component
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -71,6 +72,7 @@ fun <T : TMDbItem> TMDbContent(tmdbItem: T, modifier: Modifier = Modifier, onCli
             onClick = { onClick.invoke(tmdbItem) },
         ) {
             Box {
+                Log.i("TmdbItem:", tmdbItem.posterUrl.toString())
                 TMDbItemPoster(tmdbItem.posterUrl, tmdbItem.name)
                 TMDbItemInfo(
                     tmdbItem,

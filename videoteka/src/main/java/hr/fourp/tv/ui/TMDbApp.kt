@@ -1,6 +1,9 @@
 package hr.fourp.tv.ui
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -13,6 +16,7 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Tv
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -22,10 +26,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
+import androidx.tv.material3.MaterialTheme
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sample.tmdb.bookmark.BookmarkScreen
 import com.sample.tmdb.common.MainDestinations
+import com.sample.tmdb.common.ui.Dimens
 import com.sample.tmdb.credit.CreditScreen
 import com.sample.tmdb.credit.PersonScreen
 import com.sample.tmdb.detail.MovieDetailScreen
@@ -64,11 +70,13 @@ fun TMDbApp() {
         tabs = appState.navBarTabs,
         currentRoute = appState.currentRoute,
         navigateToRoute = appState::navigateToNavBarRoute,
-    ){
+    ) {
         NavHost(
             navController = appState.navController,
             startDestination = MainDestinations.HOME_ROUTE,
-            modifier = Modifier.padding(3.dp),
+            modifier = Modifier
+                .background(Color.Black)
+                .padding(PaddingValues(horizontal = Dimens.TMDb_16_dp)),
         ) {
             navigationScreens(appState.navController)
             detailScreens(appState.navController)
@@ -77,8 +85,8 @@ fun TMDbApp() {
             searchScreens(appState.navController)
             creditScreens(appState.navController)
             personScreen(appState.navController)
-            webPlayerScreen(appState.navController)
             imagesScreen()
+            webPlayerScreen(appState.navController)
         }
     }
 }
@@ -240,28 +248,48 @@ private fun NavGraphBuilder.personScreen(navController: NavController) {
     }
 }
 
+//private fun NavGraphBuilder.imagesScreen() {
+//    composable(
+//        route = "${MainDestinations.TMDB_IMAGES_ROUTE}/{${MainDestinations.TMDB_IMAGES_KEY}}" +
+//            "/{${MainDestinations.TMDB_IMAGE_PAGE}}",
+//        arguments =
+//        listOf(
+//            navArgument(MainDestinations.TMDB_IMAGES_KEY) { type = NavType.StringType },
+//            navArgument(MainDestinations.TMDB_IMAGE_PAGE) { type = NavType.IntType },
+//        ),
+//    ) { from ->
+//        ImagesScreen(
+//            images =
+//            gson.fromJson(
+//                from.arguments?.getString(MainDestinations.TMDB_IMAGES_KEY),
+//                object : TypeToken<List<TMDbImage>>() {}.type,
+//            ),
+//            initialPage = from.arguments?.getInt(MainDestinations.TMDB_IMAGE_PAGE)!!,
+//        )
+//    }
+//}
+//
 private fun NavGraphBuilder.imagesScreen() {
     composable(
         route = "${MainDestinations.TMDB_IMAGES_ROUTE}/{${MainDestinations.TMDB_IMAGES_KEY}}" +
-            "/{${MainDestinations.TMDB_IMAGE_PAGE}}",
+                "/{${MainDestinations.TMDB_IMAGE_PAGE}}",
         arguments =
         listOf(
             navArgument(MainDestinations.TMDB_IMAGES_KEY) { type = NavType.StringType },
             navArgument(MainDestinations.TMDB_IMAGE_PAGE) { type = NavType.IntType },
         ),
-    ) { from ->
+    ) { backStackEntry ->
+        // Retrieve the argument and pass it to PlayerScreen
+        val passArgument = backStackEntry.arguments?.getString(MainDestinations.TMDB_IMAGES_KEY)
+        val listOfImages = gson.fromJson(passArgument, object : TypeToken<List<TMDbImage>>() {}.type) as List<TMDbImage>
         ImagesScreen(
-            images =
-            gson.fromJson(
-                from.arguments?.getString(MainDestinations.TMDB_IMAGES_KEY),
-                object : TypeToken<List<TMDbImage>>() {}.type,
-            ),
-            initialPage = from.arguments?.getInt(MainDestinations.TMDB_IMAGE_PAGE)!!,
+            images = listOfImages,
+            initialPage = backStackEntry.arguments?.getInt(MainDestinations.TMDB_IMAGE_PAGE)!!,
         )
     }
 }
 
-private fun NavGraphBuilder.webPlayerScreen(navController: NavController){
+private fun NavGraphBuilder.webPlayerScreen(navController: NavController) {
     composable(
         route = "${MainDestinations.TMDB_WATCH_MOVIE}/{${MainDestinations.TMDB_ID_KEY}}",
         arguments =
@@ -272,7 +300,7 @@ private fun NavGraphBuilder.webPlayerScreen(navController: NavController){
         // Retrieve the argument and pass it to PlayerScreen
         val passArgument = backStackEntry.arguments?.getInt(MainDestinations.TMDB_ID_KEY)
         passArgument?.let {
-            DemoPlayer(navController,it)
+            DemoPlayer(navController, it)
         }
     }
 }

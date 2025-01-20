@@ -7,6 +7,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
@@ -26,6 +27,7 @@ private val DarkColorPalette =
         primary = AshGray,
         primaryVariant = DarkGray,
         secondary = Teal200,
+        background= Color.Black
     )
 
 private val LightColorPalette =
@@ -33,6 +35,7 @@ private val LightColorPalette =
         primary = GRAY,
         primaryVariant = DarkGray,
         secondary = Teal200,
+        background = Color.Black
     /* Other default colors to override
     background = Color.White,
     surface = Color.White,

@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep Compose runtime classes
+-keep class androidx.compose.runtime.** { *; }
+-keep class androidx.compose.runtime.snapshots.** { *; }
+
+# Keep Kotlin metadata for Compose
+-keepattributes KotlinMetadata

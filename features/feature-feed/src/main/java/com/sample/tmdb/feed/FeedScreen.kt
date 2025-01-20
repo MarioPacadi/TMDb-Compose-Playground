@@ -147,7 +147,6 @@ fun FeedCollectionList(navController: NavController, collection: List<FeedWrappe
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PagerTMDbItemContainer(item: FeedWrapper, navController: NavController, onFeedClick: (TMDbItem) -> Unit) {
     val pagerState = rememberPagerState(pageCount = { item.feeds.size })
@@ -170,43 +169,49 @@ fun PagerTMDbItemContainer(item: FeedWrapper, navController: NavController, onFe
         }
     }
 
-    HorizontalPager(
-        state = pagerState,
-        contentPadding = PaddingValues(horizontal = Dimens.TMDb_16_dp),
-    ) { page ->
-        with(item.feeds[page]) {
-            TrendingItem(
-                modifier =
-                Modifier.pagerTransition(
-                    pagerState = pagerState,
-                    page = page,
-                ),
-                title = name,
-                imageUrl = backdropUrl,
-                releaseDate = releaseDate,
-                onClick = { onFeedClick(this) },
-            )
-        }
-    }
+//    HorizontalPager(
+//        state = pagerState,
+//        contentPadding = PaddingValues(horizontal = Dimens.TMDb_16_dp),
+//    ) { page ->
+//        with(item.feeds[page]) {
+//            TrendingItem(
+//                modifier =
+//                Modifier.pagerTransition(
+//                    pagerState = pagerState,
+//                    page = page,
+//                ),
+//                title = name,
+//                imageUrl = backdropUrl,
+//                releaseDate = releaseDate,
+//                onClick = { onFeedClick(this) },
+//            )
+//        }
+//    }
 
-    Spacer(modifier = Modifier.height(20.dp))
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        repeat(pagerState.pageCount) { iteration ->
-            val color =
-                if (pagerState.currentPage == iteration) MaterialTheme.colors.primary else Teal200
-            Box(
-                modifier =
-                Modifier
-                    .padding(Dimens.TMDb_4_dp)
-                    .clip(CircleShape)
-                    .background(color)
-                    .size(TMDb_6_dp),
-            )
-        }
-    }
+//    Spacer(modifier = Modifier.height(20.dp))
+//    Row(
+//        modifier = Modifier.fillMaxWidth(),
+//        horizontalArrangement = Arrangement.Center,
+//    ) {
+//        repeat(pagerState.pageCount) { iteration ->
+//            val color =
+//                if (pagerState.currentPage == iteration) MaterialTheme.colors.primary else Teal200
+//            Box(
+//                modifier =
+//                Modifier
+//                    .padding(Dimens.TMDb_4_dp)
+//                    .clip(CircleShape)
+//                    .background(color)
+//                    .size(TMDb_6_dp),
+//            )
+//        }
+//    }
+
+    TrendingCarousel(
+        pagerState = pagerState,
+        contentPadding = PaddingValues(horizontal = Dimens.TMDb_16_dp),
+        item =item,
+        onClick = onFeedClick)
 }
 
 @Composable

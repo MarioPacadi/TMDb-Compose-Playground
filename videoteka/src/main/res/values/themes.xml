@@ -1,6 +1,5 @@
 <resources>
 
-    <style name="Theme.TmdbCompose" parent="Theme.MaterialComponents.DayNight">
-        <item name="android:statusBarColor">@color/purple_700</item>
-    </style>
+    <style name="Theme.TmdbCompose" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight"/>
 </resources>

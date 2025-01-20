@@ -1,6 +1,7 @@
 package com.sample.tmdb.detail
 
 import android.net.Uri
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.AnimatedVisibility
@@ -109,7 +110,6 @@ import coil.request.SuccessResult
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sample.tmdb.common.MainDestinations
-import com.sample.tmdb.common.R as R1
 import com.sample.tmdb.common.model.TMDbItem
 import com.sample.tmdb.common.ui.Content
 import com.sample.tmdb.common.ui.Dimens.TMDb_12_dp
@@ -131,7 +131,7 @@ import com.sample.tmdb.domain.model.Movie
 import com.sample.tmdb.domain.model.TMDbImage
 import com.sample.tmdb.domain.model.TMDbItemDetails
 import com.sample.tmdb.domain.model.TVShow
-import com.sample.tmdb.feature_webview.DemoPlayer
+import com.sample.tmdb.common.R as R1
 
 @Composable
 fun MovieDetailScreen(navController: NavController, viewModel: MovieDetailViewModel = hiltViewModel()) {
@@ -188,6 +188,7 @@ private fun <T : TMDbItemDetails, E : TMDbItem> DetailScreen(
         viewModel = viewModel,
         navController = navController,
         onImagesSelected = { images, index ->
+            Log.i("DetailScreen $index", images.toString())
             navController.navigate(
                 "${MainDestinations.TMDB_IMAGES_ROUTE}/${
                     Uri.encode(

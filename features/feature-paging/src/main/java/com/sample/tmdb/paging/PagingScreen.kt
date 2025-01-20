@@ -101,6 +101,7 @@ private fun <T : TMDbItem> LazyTMDbItemGrid(lazyTMDbItems: LazyPagingItems<T>, o
             items(lazyTMDbItems.itemCount) { index ->
                 val tmdbItem = lazyTMDbItems[index]
                 tmdbItem?.let {
+                    println(it)
                     TMDbContent(
                         it,
                         Modifier

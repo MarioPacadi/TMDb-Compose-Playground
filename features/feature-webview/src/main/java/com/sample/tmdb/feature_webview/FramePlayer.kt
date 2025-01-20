@@ -55,7 +55,7 @@ fun WebViewScreen(url: String,modifier: Modifier=Modifier) {
 
 
     AndroidView(
-        factory = { factory_context ->
+        factory = { _ ->
             geckoView
         },
         modifier = modifier.fillMaxSize(),

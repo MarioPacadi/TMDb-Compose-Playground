@@ -44,9 +44,9 @@ import com.sample.tmdb.common.ui.Dimens.TMDb_4_dp
 import com.sample.tmdb.common.ui.Dimens.TMDb_8_dp
 import com.sample.tmdb.domain.model.TMDbImage
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ImagesScreen(images: List<TMDbImage>, initialPage: Int) {
+    Log.i("Images: ", images.toString())
     if (images.isEmpty() || initialPage !in images.indices) return
 
     val pagerState =

@@ -50,10 +50,9 @@ import com.sample.tmdb.common.utils.toDp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BookmarkScreen(navController: NavController, coroutineScope: CoroutineScope = rememberCoroutineScope()) {
-    val tabs = remember { MediaTab.values() }
+    val tabs = remember { MediaTab.entries.toTypedArray() }
     val pagerState =
         rememberPagerState(pageCount = {
             tabs.size
