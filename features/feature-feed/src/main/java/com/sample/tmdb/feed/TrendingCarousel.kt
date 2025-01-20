@@ -1,5 +1,6 @@
 package com.sample.tmdb.feed
 
+import android.widget.Toast
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -29,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Carousel
@@ -39,6 +41,7 @@ import androidx.tv.material3.rememberCarouselState
 import coil.compose.AsyncImage
 import com.sample.tmdb.common.model.TMDbItem
 import com.sample.tmdb.common.ui.Dimens.TMDb_12_dp
+import com.sample.tmdb.common.ui.Dimens.TMDb_4_dp
 import com.sample.tmdb.common.ui.Dimens.TMDb_6_dp
 import com.sample.tmdb.domain.model.FeedWrapper
 
@@ -49,6 +52,7 @@ fun TrendingCarousel(
     modifier: Modifier=Modifier) {
     var carouselFocused by remember { mutableStateOf(false) }
     val carouselState = rememberCarouselState()
+    val context=LocalContext.current
     Carousel(
         itemCount = pagerState.pageCount,
         carouselState = carouselState,
@@ -56,7 +60,6 @@ fun TrendingCarousel(
         Modifier
             .height(250.dp)
             .fillMaxWidth()
-            .padding(contentPadding)
             .onFocusChanged {
                 carouselFocused = it.isFocused
             },
@@ -73,22 +76,26 @@ fun TrendingCarousel(
             Card(
                 modifier = modifier
                     .fillMaxWidth()
+                    .padding(TMDb_4_dp)
                     .height(180.dp)
                     .clip(RoundedCornerShape(10.dp))
 //                    .animateEnterExit(
 //                        enter = slideInHorizontally(animationSpec = tween(1000)) { it / 2 },
 //                        exit = slideOutHorizontally(animationSpec = tween(1000))
 //                    )
-                    .then(Modifier.clickable(onClick = { onClick(this) })),
+                    .then(Modifier.clickable(onClick = {
+                        onClick(this)
+//                        Toast.makeText(context,"ImageUrl: $backdropUrl", Toast.LENGTH_LONG).show()
+                    })),
             ) {
                 Box(modifier = Modifier.fillMaxSize()) {
                     AsyncImage(
                         model = backdropUrl,
                         contentDescription = null,
                         modifier = Modifier
-                            .padding(10.dp)
-                            .fillMaxWidth(),
+                            .fillMaxSize(),
                         contentScale = ContentScale.Crop,
+                        alignment = Alignment.Center,
                     )
 
                     Column(
