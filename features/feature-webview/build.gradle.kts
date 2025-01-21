@@ -52,10 +52,16 @@ dependencies {
     implementation(Deps.coil)
     implementation(Deps.navigationCompose)
     implementation(Deps.hilt)
+    implementation(Deps.hilt_compose)
     ksp(Deps.hilt_compiler)
     implementation(project(mapOf("path" to BuildModules.DOMAIN)))
 
-    implementation(Deps.genkoView)
     implementation(Deps.tvMaterial)
     implementation(Deps.tvFoundation)
+
+    implementation(Deps.genkoView)
+
+    // Media3 (ExoPlayer)
+    implementation("androidx.media3:media3-exoplayer:1.5.1")
+    implementation("androidx.media3:media3-ui:1.5.1")
 }

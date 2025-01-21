@@ -2,7 +2,6 @@ package com.sample.tmdb.feature_webview
 
 import android.app.Activity
 import android.content.pm.ActivityInfo
-import android.view.ViewGroup
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -20,50 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
-import org.mozilla.geckoview.GeckoSession
-import org.mozilla.geckoview.GeckoView
+import com.sample.tmdb.feature_webview.gecko.WebViewScreen
+import com.sample.tmdb.feature_webview.mediaplayer.view.VideoPlayerScreen
 
 @Composable
-fun WebViewScreen(url: String,modifier: Modifier=Modifier) {
-
-    val context = LocalContext.current
-    val geckoRuntime = GeckoRuntimeHolder.getOrCreate(context)
-
-    val geckoSession = remember { GeckoSession().apply { open(geckoRuntime) } }
-
-    val geckoView = remember {
-        GeckoView(context).apply {
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            setSession(geckoSession)
-        }
-    }
-
-    DisposableEffect(Unit) {
-        // Load the URL into the GeckoSession
-        geckoSession.loadUri(url)
-
-        onDispose {
-            // Cleanup when the composable is disposed
-            geckoSession.close() // Close session to release resources
-        }
-    }
-
-
-    AndroidView(
-        factory = { _ ->
-            geckoView
-        },
-        modifier = modifier.fillMaxSize(),
-    )
-}
-
-@Composable
-fun DemoPlayer(navController: NavController,movieId: Int,modifier: Modifier=Modifier) {
+fun DemoPlayer(navController: NavController, movieId: Int, modifier: Modifier = Modifier) {
     BackHandler {
 //        WebViewSettings.closeSession()
         navController.popBackStack() // Navigate back to the previous screen
@@ -84,6 +45,7 @@ fun DemoPlayer(navController: NavController,movieId: Int,modifier: Modifier=Modi
             contentAlignment = Alignment.Center
         ) {
             WebViewScreen(url = "https://vidsrc.xyz/embed/movie?tmdb=${movieId}",modifier)
+//            VideoPlayerScreen(url = "https://vidsrc.xyz/embed/movie?tmdb=${movieId}", modifier = modifier)
         }
     }
 }

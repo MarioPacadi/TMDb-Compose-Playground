@@ -1,4 +1,4 @@
-package com.sample.tmdb.feature_webview
+package com.sample.tmdb.feature_webview.gecko
 
 import android.content.Context
 import org.mozilla.geckoview.GeckoRuntime
